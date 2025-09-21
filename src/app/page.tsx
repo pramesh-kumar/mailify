@@ -1,14 +1,11 @@
 'use client'
 
 import { useSession, signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
 import Link from 'next/link'
 import { Mail, Brain, Shield, Zap, LogOut } from 'lucide-react'
 
 export default function Home() {
   const { data: session, status } = useSession()
-  const router = useRouter()
 
   // Removed auto-redirect - let users choose to go to dashboard
 

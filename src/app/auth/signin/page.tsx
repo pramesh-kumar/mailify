@@ -11,7 +11,7 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
-  const { data: session, status } = useSession()
+  const { status } = useSession()
 
   useEffect(() => {
     if (status === 'authenticated') {

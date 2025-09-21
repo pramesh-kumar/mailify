@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, Target, Lock, Clock } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 
 export default function About() {
   return (
