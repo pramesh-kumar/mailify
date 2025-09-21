@@ -52,7 +52,7 @@ export default function About() {
               </div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">AI Analysis & Processing</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Our advanced Gemini AI analyzes each email's content and generates concise summaries.
+                Our advanced Gemini AI analyzes each email&apos;s content and generates concise summaries.
               </p>
               <ul className="text-xs text-gray-500 space-y-1">
                 <li>• Google Gemini AI technology</li>
