@@ -1,15 +1,15 @@
 # Mailify - Smart Email Summarizer App
 
-A full-stack web application that allows users to store, manage, and get AI-generated summaries of emails with automatic classification.
+A full-stack web application that allows users to manually add emails and get AI-generated summaries with automatic classification.
 
 ## 🚀 Features
 
 - **Secure Authentication**: NextAuth.js with Google OAuth and email/password login
-- **Email Management**: Add, view, and organize emails
-- **AI Summarization**: Get 2-3 line summaries of long emails using OpenAI GPT
+- **Manual Email Entry**: Add emails by copying and pasting content
+- **AI Summarization**: Get 2-3 line summaries using Google Gemini AI
 - **Smart Classification**: Automatic tagging as Urgent, Informative, or Spam
 - **Search & Filter**: Find emails by content and filter by tags
-- **Responsive Design**: Beautiful UI with Tailwind CSS
+- **Beautiful UI**: Modern gradient design with Tailwind CSS
 - **Real-time Updates**: Regenerate summaries on demand
 
 ## 🛠️ Tech Stack
@@ -18,7 +18,7 @@ A full-stack web application that allows users to store, manage, and get AI-gene
 - **Backend**: Next.js API routes
 - **Database**: MongoDB with Prisma ORM
 - **Authentication**: NextAuth.js
-- **AI**: OpenAI API (GPT-3.5-turbo)
+- **AI**: Google Gemini AI
 - **Deployment**: Vercel + MongoDB Atlas
 
 ## 📋 Prerequisites
@@ -54,8 +54,8 @@ NEXTAUTH_URL="http://localhost:3000"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
-# OpenAI API
-OPENAI_API_KEY="your-openai-api-key"
+# Google Gemini API
+GEMINI_API_KEY="your-gemini-api-key"
 ```
 
 ### 3. Database Setup
@@ -103,7 +103,7 @@ NEXTAUTH_SECRET="your-production-secret"
 NEXTAUTH_URL="https://your-app.vercel.app"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
-OPENAI_API_KEY="your-openai-api-key"
+GEMINI_API_KEY="your-gemini-api-key"
 ```
 
 ## 👤 Demo User
@@ -112,7 +112,7 @@ For quick testing, use the seeded demo account:
 - **Email**: demo@mailify.com
 - **Password**: demo123
 
-The demo account comes with 5 sample emails showcasing different features.
+The demo account comes with 5 sample emails showcasing different AI classifications and summaries.
 
 ## 📁 Project Structure
 
@@ -126,13 +126,15 @@ src/
 │   ├── auth/
 │   │   ├── signin/
 │   │   └── signup/
+│   ├── about/
 │   ├── dashboard/
 │   ├── globals.css
 │   ├── layout.tsx
 │   └── page.tsx
 ├── components/
 │   ├── AddEmailForm.tsx
-│   └── EmailCard.tsx
+│   ├── EmailCard.tsx
+│   └── Providers.tsx
 lib/
 ├── auth.ts
 ├── ai.ts
@@ -151,19 +153,39 @@ types/
 - `POST /api/emails` - Create new email with AI processing
 - `PUT /api/emails/[id]` - Update email (regenerate summary)
 
+## 📧 How to Use
+
+1. **Sign Up**: Create an account with your email
+2. **Login**: Sign in to access the dashboard
+3. **Add Emails**: Click "Add New Email" and manually enter:
+   - Subject line
+   - Sender email
+   - Full email content
+4. **AI Processing**: Gemini AI automatically generates summary and classification
+5. **Manage**: Search, filter, and organize your emails
+6. **Regenerate**: Click refresh icon to regenerate AI summaries
+
+## ⚠️ Current Limitations
+
+- **Manual Entry Only**: No automatic email fetching from Gmail/Outlook
+- **No Email Integration**: Requires copy/paste of email content
+- **Light Mode Only**: No dark mode support
+- **Proof of Concept**: Designed for testing AI email processing
+
 ## 🤖 AI Features
 
-The app uses OpenAI's GPT-3.5-turbo to:
+The app uses Google Gemini AI to:
 - Generate concise 2-3 line summaries
 - Classify emails as Urgent, Informative, or Spam
-- Process emails in real-time when added
+- Process emails in real-time when manually added
 - Allow summary regeneration on demand
 
 ## 🎨 UI Features
 
-- Clean, modern design with Tailwind CSS
+- Beautiful gradient backgrounds and modern design
+- Light mode only interface
 - Responsive layout for all devices
-- Expandable email cards
+- Expandable email cards with improved content display
 - Real-time search and filtering
 - Loading states and error handling
 - Intuitive navigation and user experience

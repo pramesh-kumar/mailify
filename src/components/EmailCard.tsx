@@ -38,11 +38,11 @@ export default function EmailCard({ email, onRegenerateSummary }: EmailCardProps
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4">
+    <div className="bg-white rounded-lg shadow-md p-6 mb-4">
       <div className="flex justify-between items-start mb-3">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{email.subject}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">From: {email.sender}</p>
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">{email.subject}</h3>
+          <p className="text-sm text-gray-600">From: {email.sender}</p>
         </div>
         <div className="flex items-center gap-2">
           {email.tag && (
@@ -62,9 +62,9 @@ export default function EmailCard({ email, onRegenerateSummary }: EmailCardProps
       </div>
 
       {email.summary && (
-        <div className="mb-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-md">
-          <p className="text-sm text-gray-700 dark:text-gray-200 font-medium">AI Summary:</p>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{email.summary}</p>
+        <div className="mb-3 p-3 bg-gray-50 rounded-md">
+          <p className="text-sm text-gray-700 font-medium">AI Summary:</p>
+          <p className="text-sm text-gray-600 mt-1">{email.summary}</p>
         </div>
       )}
 
@@ -77,9 +77,12 @@ export default function EmailCard({ email, onRegenerateSummary }: EmailCardProps
       </button>
 
       {isExpanded && (
-        <div className="border-t pt-3">
-          <div className="bg-gray-50 p-3 rounded-md">
-            <pre className="text-sm text-gray-700 whitespace-pre-wrap font-sans">{email.body}</pre>
+        <div className="border-t border-gray-200 pt-4 mt-3">
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200 shadow-sm">
+            <h4 className="text-sm font-semibold text-gray-800 mb-2">Full Email Content:</h4>
+            <div className="prose prose-sm max-w-none">
+              <pre className="text-sm text-gray-700 whitespace-pre-wrap font-sans leading-relaxed">{email.body}</pre>
+            </div>
           </div>
         </div>
       )}

@@ -7,7 +7,6 @@ import Link from 'next/link'
 import EmailCard from '@/components/EmailCard'
 import AddEmailForm from '@/components/AddEmailForm'
 import { Search, Filter, LogOut } from 'lucide-react'
-import ThemeToggle from '@/components/ThemeToggle'
 
 interface Email {
   id: string
@@ -125,19 +124,18 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b dark:border-gray-700">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
               Mailify
             </Link>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600 dark:text-gray-300">Welcome, {session.user?.name}</span>
-              <ThemeToggle />
+              <span className="text-sm text-gray-600">Welcome, {session.user?.name}</span>
               <button
                 onClick={() => signOut()}
-                className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
               >
                 <LogOut className="w-4 h-4" />
                 Sign out
@@ -160,7 +158,7 @@ export default function Dashboard() {
               placeholder="Search emails..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -169,7 +167,7 @@ export default function Dashboard() {
             <select
               value={selectedTag}
               onChange={(e) => setSelectedTag(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Tags</option>
               <option value="Urgent">Urgent</option>
