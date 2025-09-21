@@ -2,6 +2,12 @@
 
 A full-stack web application that allows users to manually add emails and get AI-generated summaries with automatic classification.
 
+1. Open `vercel-url`
+2. **Quick Test**: Use demo account
+   - Email: `demo@mailify.com`
+   - Password: `demo123`
+
+
 ## 🚀 Features
 
 - **Secure Authentication**: NextAuth.js with Google OAuth and email/password login
@@ -21,63 +27,107 @@ A full-stack web application that allows users to manually add emails and get AI
 - **AI**: Google Gemini AI
 - **Deployment**: Vercel + MongoDB Atlas
 
-## 📋 Prerequisites
+## 🚀 How to Run This Application
 
-- Node.js 18+ and npm
-- MongoDB Atlas account
-- OpenAI API key
+### Prerequisites
+- Node.js 18+ installed
+- MongoDB Atlas account (free tier works)
+- Google Gemini API key
 - Google OAuth credentials (optional)
 
-## 🚀 Local Development Setup
-
-### 1. Clone and Install Dependencies
+### Step 1: Clone Repository
 
 ```bash
-git clone <your-repo-url>
-cd Mailify
+git clone https://github.com/yourusername/mailify.git
+cd mailify
 npm install
 ```
 
-### 2. Environment Variables
+### Step 2: Set Up MongoDB Atlas
 
-Create a `.env` file in the root directory:
+1. Go to [MongoDB Atlas](https://www.mongodb.com/atlas)
+2. Create free account and cluster
+3. Get connection string from "Connect" → "Connect your application"
+4. Whitelist your IP address in Network Access
+
+### Step 3: Get Google Gemini API Key
+
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create new API key
+3. Copy the key for environment variables
+
+### Step 4: Environment Variables
+
+Create `.env` file in root directory:
 
 ```env
-# Database
+# Database (Required)
 DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/mailify?retryWrites=true&w=majority"
 
-# NextAuth
-NEXTAUTH_SECRET="your-secret-key-here"
+# NextAuth (Required)
+NEXTAUTH_SECRET="your-random-secret-key-here"
 NEXTAUTH_URL="http://localhost:3000"
 
-# Google OAuth (optional)
+# Google Gemini AI (Required)
+GEMINI_API_KEY="your-gemini-api-key"
+
+# Google OAuth (Optional - for Google login)
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
-
-# Google Gemini API
-GEMINI_API_KEY="your-gemini-api-key"
 ```
 
-### 3. Database Setup
+### Step 5: Database Setup
 
 ```bash
 # Generate Prisma client
 npm run db:generate
 
-# Push schema to database
+# Push database schema
 npm run db:push
 
-# Seed with sample data
+# Seed with demo data (optional)
 npm run db:seed
 ```
 
-### 4. Run Development Server
+### Step 6: Run Application
 
 ```bash
+# Start development server
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the application.
+### Step 7: Access Application
+
+1. Open `http://localhost:3000`
+2. **Quick Test**: Use demo account
+   - Email: `demo@mailify.com`
+   - Password: `demo123`
+3. **Or** create your own account
+
+### 🎯 What You Can Do
+
+- ✅ Sign up/login with email or Google
+- ✅ Add emails manually (copy/paste content)
+- ✅ Get AI summaries and classifications
+- ✅ Search and filter emails
+- ✅ Regenerate summaries
+- ✅ View organized email dashboard
+
+### 🔧 Troubleshooting
+
+**Database Connection Issues:**
+- Check MongoDB Atlas IP whitelist
+- Verify connection string format
+- Ensure cluster is running
+
+**AI Not Working:**
+- Verify Gemini API key is correct
+- Check API key has proper permissions
+- Ensure you have API quota remaining
+
+**Build Errors:**
+- Run `npm run db:generate` after any schema changes
+- Clear `.next` folder and restart dev server
 
 ## 🌐 Deployment
 
@@ -198,9 +248,6 @@ The app uses Google Gemini AI to:
 - Protected API routes
 - Input validation and sanitization
 
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
